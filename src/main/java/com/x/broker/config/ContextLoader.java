@@ -22,7 +22,9 @@ public class ContextLoader extends AbstractAnnotationConfigDispatcherServletInit
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        Class<?>[] classes = {};
+        Class<?>[] classes = {
+            WebConfiguration.class
+        };
 
         return classes;
     }

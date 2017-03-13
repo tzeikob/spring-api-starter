@@ -2,6 +2,8 @@ package com.x.broker.domain;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,7 @@ import javax.persistence.UniqueConstraint;
 
 /**
  * A user persistent entity bean.
- * 
+ *
  * @author Akis Papadopoulos
  */
 @Entity
@@ -37,12 +39,13 @@ public class User extends AbstractEntity {
     @JacksonXmlProperty(isAttribute = true)
     private boolean enabled;
 
-    public User() {
-    }
+    @Column(name = "createdDate", unique = false, nullable = false)
+    @JacksonXmlProperty(isAttribute = true)
+    private Date createdDate;
 
-    public User(String username, boolean enabled) {
-        this.username = username;
-        this.enabled = enabled;
+    public User() {
+        enabled = true;
+        createdDate = new Date(Calendar.getInstance().getTimeInMillis());
     }
 
     public Long getId() {
@@ -67,6 +70,14 @@ public class User extends AbstractEntity {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     @Override
@@ -111,6 +122,7 @@ public class User extends AbstractEntity {
         return "User{" + "id=" + id
                 + ", username=" + username
                 + ", enabled=" + enabled
+                + ", createdDate=" + createdDate
                 + "}";
     }
 }

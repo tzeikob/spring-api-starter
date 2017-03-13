@@ -15,7 +15,9 @@ public class ContextLoader extends AbstractAnnotationConfigDispatcherServletInit
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        Class<?>[] classes = {};
+        Class<?>[] classes = {
+            DataSourceConfiguration.class
+        };
 
         return classes;
     }
@@ -45,6 +47,6 @@ public class ContextLoader extends AbstractAnnotationConfigDispatcherServletInit
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
 
-        servletContext.setInitParameter("spring.profiles.default", "develop");
+        servletContext.setInitParameter("spring.profiles.default", "development");
     }
 }

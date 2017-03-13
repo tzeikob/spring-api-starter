@@ -9,6 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * An abstract transactional repository upon abstract entities.
+ * 
+ * @author Akis Papadopoulos
+ */
 @Repository
 @Transactional
 public abstract class AbstractRepository<T extends AbstractEntity> implements Serializable {

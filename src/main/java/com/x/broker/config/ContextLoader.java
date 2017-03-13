@@ -31,7 +31,7 @@ public class ContextLoader extends AbstractAnnotationConfigDispatcherServletInit
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/"};
+        return new String[]{"api/v1/*"};
     }
 
     @Override

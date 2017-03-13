@@ -2,6 +2,7 @@ package com.x.broker.rest;
 
 import com.x.broker.data.UserRepository;
 import com.x.broker.domain.User;
+import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Akis Papadopoulos
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping(value = "/user",
+        produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML},
+        consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public class UserResource {
 
     @Autowired

@@ -3,12 +3,14 @@ package com.x.broker.data;
 import com.x.broker.domain.User;
 import java.util.List;
 import org.hibernate.Query;
+import org.springframework.stereotype.Repository;
 
 /**
  * A data access object repository for user entities.
  *
  * @author Akis Papadopoulos
  */
+@Repository
 public class UserRepository extends AbstractRepository<User> {
 
     public UserRepository() {

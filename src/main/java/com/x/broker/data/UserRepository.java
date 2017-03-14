@@ -30,4 +30,14 @@ public class UserRepository extends AbstractRepository<User> {
 
         return null;
     }
+
+    public boolean isUsernameTaken(String username) {
+        User user = findByUsername(username);
+
+        if (user != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

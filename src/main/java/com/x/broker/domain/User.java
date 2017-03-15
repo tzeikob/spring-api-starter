@@ -2,8 +2,7 @@ package com.x.broker.domain;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import java.sql.Date;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -39,13 +40,14 @@ public class User extends AbstractEntity {
     @JacksonXmlProperty(isAttribute = true)
     private boolean enabled;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createdDate", unique = false, nullable = false)
     @JacksonXmlProperty(isAttribute = true)
     private Date createdDate;
 
     public User() {
         enabled = true;
-        createdDate = new Date(Calendar.getInstance().getTimeInMillis());
+        createdDate = new Date();
     }
 
     public Long getId() {

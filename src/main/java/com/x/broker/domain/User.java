@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * A user persistent entity bean.
@@ -32,13 +33,14 @@ public class User extends AbstractEntity {
     @JacksonXmlProperty(isAttribute = true)
     private Long id;
 
+    @NotBlank
     @Column(name = "username", unique = true, nullable = false, length = 25)
     @JacksonXmlProperty(isAttribute = true)
     private String username;
 
     @Column(name = "enabled", unique = false, nullable = false)
     @JacksonXmlProperty(isAttribute = true)
-    private boolean enabled;
+    private Boolean enabled;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createdDate", unique = false, nullable = false)
@@ -66,11 +68,11 @@ public class User extends AbstractEntity {
         this.username = username;
     }
 
-    public boolean isEnabled() {
+    public Boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 

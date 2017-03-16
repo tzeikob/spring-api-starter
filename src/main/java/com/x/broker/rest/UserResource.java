@@ -5,16 +5,21 @@ import com.x.broker.domain.User;
 import com.x.broker.exc.UserNotFoundException;
 import com.x.broker.exc.DuplicateUsernameException;
 import com.x.broker.exc.InvalidUserFormException;
+import java.net.URI;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 /**
  * A RESTful resource controller for user entities.
@@ -28,14 +33,14 @@ public class UserResource {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<User>> get() {
+    @GetMapping
+    public ResponseEntity<?> get() {
         List<User> users = userRepository.select();
 
-        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+        return ResponseEntity.ok(users);
     }
 
-    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    @GetMapping("/{username}")
     public ResponseEntity<?> findUserByUsername(@PathVariable String username) {
         User user = userRepository.findByUsername(username);
 
@@ -43,11 +48,11 @@ public class UserResource {
             throw new UserNotFoundException(username);
         }
 
-        return new ResponseEntity<User>(user, HttpStatus.FOUND);
+        return ResponseEntity.status(HttpStatus.FOUND).body(user);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<User> create(@RequestBody @Valid User user) {
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody @Valid User user, UriComponentsBuilder uriBuilder) {
         String username = user.getUsername();
 
         if (userRepository.isUsernameTaken(username)) {
@@ -56,11 +61,15 @@ public class UserResource {
 
         userRepository.save(user);
 
-        return new ResponseEntity<User>(user, HttpStatus.CREATED);
+        URI uri = uriBuilder.path("/user/{username}")
+                .buildAndExpand(username)
+                .toUri();
+
+        return ResponseEntity.created(uri).body(user);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<User> update(@RequestBody @Valid User data) {
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody @Valid User data) {
         Long id = data.getId();
 
         if (data.getId() == null) {
@@ -82,11 +91,11 @@ public class UserResource {
 
         userRepository.update(user);
 
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        return ResponseEntity.ok(user);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<User> delete(@PathVariable Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         User user = userRepository.find(id);
 
         if (user == null) {
@@ -95,6 +104,6 @@ public class UserResource {
 
         userRepository.delete(user);
 
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        return ResponseEntity.ok(user);
     }
 }

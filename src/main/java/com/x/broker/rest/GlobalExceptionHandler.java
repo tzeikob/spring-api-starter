@@ -15,11 +15,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  */
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-
+    
     @ExceptionHandler(JDBCException.class)
-    protected ResponseEntity<ErrorMessage> handleFatalError(Exception exc) {
+    protected ResponseEntity<?> handleFatalError(Exception exc) {
         ErrorMessage error = new ErrorMessage(504, "Service is not available, a fatal error occurred");
-
-        return new ResponseEntity<ErrorMessage>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }
 }

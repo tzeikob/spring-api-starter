@@ -19,23 +19,23 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class UserResourceHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
-    protected ResponseEntity<ErrorMessage> handleNotFound(RuntimeException exc) {
+    protected ResponseEntity<?> handleNotFound(RuntimeException exc) {
         ErrorMessage error = new ErrorMessage(404, exc.getMessage());
 
-        return new ResponseEntity<ErrorMessage>(error, HttpStatus.NOT_FOUND);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
     @ExceptionHandler(DuplicateUsernameException.class)
-    protected ResponseEntity<ErrorMessage> handleConfilct(RuntimeException exc) {
+    protected ResponseEntity<?> handleConfilct(RuntimeException exc) {
         ErrorMessage error = new ErrorMessage(409, exc.getMessage());
 
-        return new ResponseEntity<ErrorMessage>(error, HttpStatus.CONFLICT);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
     }
 
     @ExceptionHandler(InvalidUserFormException.class)
-    protected ResponseEntity<ErrorMessage> handleBadRequest(RuntimeException exc) {
+    protected ResponseEntity<?> handleBadRequest(RuntimeException exc) {
         ErrorMessage error = new ErrorMessage(400, exc.getMessage());
 
-        return new ResponseEntity<ErrorMessage>(error, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 }

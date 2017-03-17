@@ -21,7 +21,7 @@ public class FallbackExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     public ResponseEntity<Object> handleAll(Exception exc, WebRequest request) {
-        ErrorMessage error = new ErrorMessage(504, "An unknown fatal error occurred");
+        ErrorMessage error = new ErrorMessage(504, "Fatal error, unknown problem occurred");
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }

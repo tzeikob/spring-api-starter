@@ -33,7 +33,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleBindException(BindException exc,
             HttpHeaders headers, HttpStatus status, WebRequest request) {
-        ErrorMessage error = new ErrorMessage(504, "A fatal binding error occurred");
+        ErrorMessage error = new ErrorMessage(504, "Fatal error, binding problem occurred");
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         String method = exc.getHttpMethod();
         String url = exc.getRequestURL();
 
-        ErrorMessage error = new ErrorMessage(504, "Unknown error, no handler found for "
+        ErrorMessage error = new ErrorMessage(504, "Fatal error, no handler found for "
                 + method + " on " + url);
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
@@ -122,7 +122,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(JDBCException.class)
     protected ResponseEntity<?> handleDatabaseFatalError(JDBCException exc) {
-        ErrorMessage error = new ErrorMessage(504, "Service is not available, a connection error occurred");
+        ErrorMessage error = new ErrorMessage(504, "Fatal error, service is not available");
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }

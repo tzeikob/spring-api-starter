@@ -9,7 +9,7 @@
     <name>broker</name>
     <version>1.0</version>
     <packaging>war</packaging>
-    <description>A broker web service application.</description>
+    <description>A broker web service application</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

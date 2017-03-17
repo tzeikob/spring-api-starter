@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
- * A global exception handler for fatal errors.
+ * A fall back exception handler for fatal errors.
  *
  * @author Akis Papadopoulos
  */
@@ -21,7 +21,7 @@ public class FallbackExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     public ResponseEntity<Object> handleAll(Exception exc, WebRequest request) {
-        ErrorMessage error = new ErrorMessage(504, "Service is not available, a fatal error occurred");
+        ErrorMessage error = new ErrorMessage(504, "An unknown fatal error occurred");
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }

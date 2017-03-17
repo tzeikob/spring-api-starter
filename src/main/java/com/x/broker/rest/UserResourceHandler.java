@@ -29,14 +29,14 @@ public class UserResourceHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(DuplicateUsernameException.class)
-    protected ResponseEntity<?> handleConfilct(DuplicateUsernameException exc) {
+    protected ResponseEntity<?> handleDuplicateUsername(DuplicateUsernameException exc) {
         ErrorMessage error = new ErrorMessage(409, exc.getMessage());
 
         return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
     }
 
     @ExceptionHandler(InvalidUserFormException.class)
-    protected ResponseEntity<?> handleBadRequest(InvalidUserFormException exc) {
+    protected ResponseEntity<?> handleInvalidForm(InvalidUserFormException exc) {
         ErrorMessage error = new ErrorMessage(400, exc.getMessage());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);

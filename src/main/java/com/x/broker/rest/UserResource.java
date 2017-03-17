@@ -78,6 +78,10 @@ public class UserResource {
 
         User user = userRepository.find(id);
 
+        if (user == null) {
+            throw new UserNotFoundException(id);
+        }
+
         String username = data.getUsername();
 
         if (!username.equals(user.getUsername())

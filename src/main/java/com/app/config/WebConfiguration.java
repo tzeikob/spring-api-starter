@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.x.broker.rest")
+@ComponentScan("com.app.rest")
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 
     @Override

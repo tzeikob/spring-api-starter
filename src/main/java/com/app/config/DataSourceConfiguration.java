@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.x.broker.data")
+@ComponentScan("com.app.data")
 @PropertySource("classpath:config.properties")
 public class DataSourceConfiguration {
 
@@ -50,7 +50,7 @@ public class DataSourceConfiguration {
         properties.put("hibernate.dialect", environment.getProperty("development.db.dialect"));
 
         sessionBuilder.addProperties(properties);
-        sessionBuilder.scanPackages("com.x.broker.domain");
+        sessionBuilder.scanPackages("com.app.domain");
 
         return sessionBuilder.buildSessionFactory();
     }
@@ -69,7 +69,7 @@ public class DataSourceConfiguration {
         properties.put("hibernate.dialect", environment.getProperty("production.db.dialect"));
 
         sessionBuilder.addProperties(properties);
-        sessionBuilder.scanPackages("com.x.broker.domain");
+        sessionBuilder.scanPackages("com.app.domain");
 
         return sessionBuilder.buildSessionFactory();
     }

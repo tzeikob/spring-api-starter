@@ -1,4 +1,4 @@
-package com.x.broker.config;
+package com.app.config;
 
 import java.util.Properties;
 import javax.naming.NamingException;

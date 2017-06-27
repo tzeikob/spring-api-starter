@@ -1,6 +1,6 @@
-package com.x.broker.rest;
+package com.app.rest;
 
-import com.x.broker.domain.ErrorMessage;
+import com.app.domain.ErrorMessage;
 import org.hibernate.JDBCException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.core.Ordered;

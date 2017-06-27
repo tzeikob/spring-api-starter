@@ -1,4 +1,4 @@
-package com.x.broker.config;
+package com.app.config;
 
 import javax.servlet.Filter;
 import javax.servlet.ServletContext;

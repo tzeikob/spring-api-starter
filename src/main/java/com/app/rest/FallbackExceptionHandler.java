@@ -1,6 +1,6 @@
-package com.x.broker.rest;
+package com.app.rest;
 
-import com.x.broker.domain.ErrorMessage;
+import com.app.domain.ErrorMessage;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;

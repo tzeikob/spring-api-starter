@@ -1,9 +1,9 @@
-package com.x.broker.rest;
+package com.app.rest;
 
-import com.x.broker.domain.ErrorMessage;
-import com.x.broker.exc.DuplicateUsernameException;
-import com.x.broker.exc.InvalidUserFormException;
-import com.x.broker.exc.UserNotFoundException;
+import com.app.domain.ErrorMessage;
+import com.app.exc.DuplicateUsernameException;
+import com.app.exc.InvalidUserFormException;
+import com.app.exc.UserNotFoundException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;

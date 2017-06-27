@@ -1,6 +1,6 @@
-package com.x.broker.data;
+package com.app.data;
 
-import com.x.broker.domain.AbstractEntity;
+import com.app.domain.AbstractEntity;
 import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Criteria;

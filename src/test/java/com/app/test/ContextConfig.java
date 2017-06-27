@@ -1,4 +1,4 @@
-package com.x.broker.test;
+package com.app.test;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

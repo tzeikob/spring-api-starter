@@ -1,4 +1,4 @@
-package com.x.broker.exc;
+package com.app.exc;
 
 /**
  * A invalid user form runtime exception.

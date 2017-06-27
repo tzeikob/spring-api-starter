@@ -1,10 +1,10 @@
-package com.x.broker.rest;
+package com.app.rest;
 
-import com.x.broker.data.UserRepository;
-import com.x.broker.domain.User;
-import com.x.broker.exc.UserNotFoundException;
-import com.x.broker.exc.DuplicateUsernameException;
-import com.x.broker.exc.InvalidUserFormException;
+import com.app.data.UserRepository;
+import com.app.domain.User;
+import com.app.exc.UserNotFoundException;
+import com.app.exc.DuplicateUsernameException;
+import com.app.exc.InvalidUserFormException;
 import java.net.URI;
 import java.util.List;
 import javax.validation.Valid;

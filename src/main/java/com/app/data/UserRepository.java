@@ -1,6 +1,6 @@
-package com.x.broker.data;
+package com.app.data;
 
-import com.x.broker.domain.User;
+import com.app.domain.User;
 import java.util.List;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;

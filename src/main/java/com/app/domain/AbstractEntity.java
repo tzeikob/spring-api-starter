@@ -1,4 +1,4 @@
-package com.x.broker.domain;
+package com.app.domain;
 
 import java.io.Serializable;
 

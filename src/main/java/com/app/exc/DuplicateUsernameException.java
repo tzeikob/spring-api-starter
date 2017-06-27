@@ -1,4 +1,4 @@
-package com.x.broker.exc;
+package com.app.exc;
 
 /**
  * A duplicate username runtime exception.

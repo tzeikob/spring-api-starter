@@ -1,4 +1,4 @@
-package com.x.broker.test;
+package com.app.test;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

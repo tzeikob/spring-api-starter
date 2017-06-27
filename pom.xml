@@ -7,7 +7,7 @@
     <groupId>com.tzeikob</groupId>
     <artifactId>spring-api-starter</artifactId>
     <name>spring-api-starter</name>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <packaging>war</packaging>
     <description>A spring starter kit for a RESTful API web service.</description>
 
